@@ -3,8 +3,8 @@ name: Track Profile Visitors
 on:
   schedule:
     - cron: "0 * * * *"  # Runs every hour
-  workflow_dispatch: # Manual run
-  repository_dispatch: # Triggered by events
+  workflow_dispatch: # Allows manual execution
+  repository_dispatch: # Triggered by external events
 
 jobs:
   update_readme:
@@ -15,14 +15,24 @@ jobs:
 
       - name: Fetch Stargazers
         run: |
-          curl -s "https://api.github.com/repos/Sow2000-bot/Sow2000-bot/stargazers" | 
+          curl -s "https://api.github.com/repos/Sow2000/Sow2000/stargazers" | 
           jq -r '.[].login' > visitors.txt
+
+      - name: Ensure Visitors File Exists
+        run: |
+          touch visitors.txt
+          echo "Visitors List:" > visitors.md
+          cat visitors.txt >> visitors.md
 
       - name: Update README
         run: |
-          sed -i '/<!--VISITORS-->/r visitors.txt' README.md
+          sed -i '/<!--VISITORS-->/r visitors.md' README.md
+          rm visitors.md  # Cleanup temporary file
+
+      - name: Commit and Push Changes
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Updated visitors list"
+          git add README.md visitors.txt
+          git commit -m "Updated visitor list" || echo "No changes to commit"
           git push
