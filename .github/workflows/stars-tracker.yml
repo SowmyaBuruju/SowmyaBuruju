@@ -1,0 +1,28 @@
+name: Track Profile Visitors
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
+  workflow_dispatch: # Manual run
+  repository_dispatch: # Triggered by events
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Stargazers
+        run: |
+          curl -s "https://api.github.com/repos/Vineesh2000/Vineesh2000/stargazers" | 
+          jq -r '.[].login' > visitors.txt
+
+      - name: Update README
+        run: |
+          sed -i '/<!--VISITORS-->/r visitors.txt' README.md
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Updated visitors list"
+          git push
