@@ -2,8 +2,7 @@
 	<img src="https://komarev.com/ghpvc/?username=Sow2000-bot&style=plastic&color=blueviolet" alt="Profile Views"/>
 </p>
 
-## 👀 Recent Visitors Who Starred My Repos:
-<!--VISITORS-->
+
 
 ## 🌍 Portfolio
 Check out my portfolio: [Vadg5bfqufymm9ze.vercel.app](https://vadg5bfqufymm9ze.vercel.app/)
