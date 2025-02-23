@@ -5,7 +5,7 @@
 
 
 ## 🌍 Portfolio
-Check out my portfolio: [Vadg5bfqufymm9ze.vercel.app](https://vadg5bfqufymm9ze.vercel.app/)
+Check out my portfolio: [https://v0-sowmya-portoflio.vercel.app/](https://v0-sowmya-portoflio.vercel.app/)
 
 
 <summary>🎭 Open Profile</summary>
