@@ -4,10 +4,6 @@
 
 
 
-## 🌍 Portfolio
-Check out my portfolio: [https://v0-sowmya-portoflio.vercel.app/](https://v0-sowmya-portoflio.vercel.app/)
-
-
 <summary>🎭 Open Profile</summary>
 
 <br>
